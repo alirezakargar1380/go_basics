@@ -43,7 +43,7 @@ func main() {
 	// Mock Data - @todo - implement DB
 	books = append(books, Book{
 		Id:   "1",
-		Name: "how we should sex with our partner",
+		Name: "how we should sex with our partnerr",
 	})
 
 	// Route Handlers / Endpoints
