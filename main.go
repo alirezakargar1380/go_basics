@@ -14,6 +14,6 @@ func main() {
 	r := mux.NewRouter()
 
 	// Route Handlers / Endpoints
-	r.HandleFunc("/", getBooks).Methods("GET")
+	// r.HandleFunc("/", getBooks).Methods("GET")
 	http.ListenAndServe(":8000", r)
 }
