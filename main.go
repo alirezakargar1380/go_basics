@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"net/http"
 
+	fun "github.com/alirezakargar1380/go_basics/test"
 	"github.com/gorilla/mux"
 )
 
@@ -34,7 +35,24 @@ func getBook(w http.ResponseWriter, r *http.Request) {
 }
 
 func main() {
-	fmt.Println("hello world")
+	var x int = 34
+	fmt.Printf("hello world = %v moda fucker", x)
+
+	// if
+	uio := 8
+	if uio > 9 {
+		fmt.Println("im bigger than 9")
+	} else {
+		fmt.Println("im smaller than 9")
+	}
+
+	for i := 0; i < 5; i++ {
+		fmt.Printf("i is = %v my darlin\n", i)
+	}
+
+	// fmt.Println(some_fun())
+	fmt.Println(fun.Some_fun())
+	// fmt.Println(fun.abc)
 
 	// init Router
 	// asd
