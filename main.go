@@ -1,7 +1,7 @@
 package main
 
 import (
-	"encoding/json"
+	// "encoding/json"
 	"fmt"
 	"net/http"
 
@@ -9,30 +9,17 @@ import (
 	"github.com/gorilla/mux"
 )
 
-type Book struct {
-	Id   string `json:"id"`
-	Name string `json:"name"`
-}
+// type Book struct {
+// 	Id   string `json:"id"`
+// 	Name string `json:"name"`
+// }
 
-var books []Book
+// var books []Book
 
-func getBooks(w http.ResponseWriter, r *http.Request) {
-	w.Header().Set("Content-Type", "application/json")
-	json.NewEncoder(w).Encode(books)
-}
-
-func getBook(w http.ResponseWriter, r *http.Request) {
-	w.Header().Set("Content-Type", "application/json")
-	params := mux.Vars(r)
-	var current Book
-	for _, item := range books {
-		if item.Id == params["id"] {
-			current = item
-		}
-	}
-
-	json.NewEncoder(w).Encode(current)
-}
+// func getBooks(w http.ResponseWriter, r *http.Request) {
+// 	w.Header().Set("Content-Type", "application/json")
+// 	json.NewEncoder(w).Encode(books)
+// }
 
 func main() {
 	var x int = 34
@@ -51,22 +38,27 @@ func main() {
 	}
 
 	// fmt.Println(some_fun())
-	fmt.Println(fun.Some_fun())
+	// fmt.Println(fun.Some_fun())
 	// fmt.Println(fun.abc)
+	// fmt.Println(fun.Books)
 
 	// init Router
 	// asd
 	r := mux.NewRouter()
 
 	// Mock Data - @todo - implement DB
-	books = append(books, Book{
+	fun.Books = append(fun.Books, fun.Book{
 		Id:   "1",
 		Name: "how we should sex with our partneradsasdf",
-	})
+	},
+		fun.Book{
+			Id:   "2",
+			Name: "moda f",
+		})
 
 	// Route Handlers / Endpoints
-	r.HandleFunc("/getBooks", getBooks).Methods("GET")
-	r.HandleFunc("/getBook/{id}", getBook).Methods("GET")
+	// r.HandleFunc("/getBooks", getBooks).Methods("GET")
+	r.HandleFunc("/getBook/{id}", fun.GetBook).Methods("GET")
 	http.ListenAndServe(":8000", r)
 	// log.Fatal()
 }
